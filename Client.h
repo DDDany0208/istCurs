@@ -20,8 +20,6 @@ public:
 
     void setChoice(const string &choice);
 
-private:
-
     void update (string winner);
 
 };

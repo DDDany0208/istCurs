@@ -9,7 +9,8 @@ class OlympicGames {
     People *peoples;
     int count;
 
-    Client *clients;
+    Client **clients;
+    int peopleCount;
 
     string readFromFile(string filename);
 
@@ -17,7 +18,7 @@ public:
     void notify();
 
     void subscribe(Client *client);
-    void unsubscribe(Client *client);
+    void unsubscribe(int index);
 
     OlympicGames();
 
