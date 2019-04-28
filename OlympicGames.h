@@ -6,11 +6,14 @@
 
 class OlympicGames {
 
-    People *peoples;
+    People **peoples;
     int count;
 
     Client **clients;
     int peopleCount;
+
+    enum {RUSSIA, CANADA, FINLAND, FRANCE, JAPAN};
+    int results[5];
 
     string readFromFile(string filename);
 
@@ -27,11 +30,17 @@ public:
     void subscribe(Client *client);
     void unsubscribe(int index);
 
+    void addPeople(People &p);
+
     OlympicGames();
 
     int getCount() const;
 
+    void addCountryResult(string &country);
+    string getWinner();
+
     void getResults();
+    void writeResult(string &line);
 
 };
 

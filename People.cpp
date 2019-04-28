@@ -51,15 +51,15 @@ void People::setStamina(int stamina) {
 void People::parseJson2People(json j) {
     this->fio = j["fio"];
     this->agility = j["a"];
+    this->force = j["f"];
+    this->luck = j["l"];
+    this->stamina = j["s"];
     this->country = j["country"];
-    this->force = j["force"];
-    this->luck = j["luck"];
-    this->stamina = j["stamina"];
     this->sport = j["sport"];
 }
 
 ostream &operator<<(ostream &os, const People &people) {
-    os << "fio: " << people.fio << " country: " << people.country << " force: " << people.force << " agility: "
+    os << "fio: " << people.fio << " Sport:" << people.sport << " country: " << people.country << " force: " << people.force << " agility: "
        << people.agility << " luck: " << people.luck << " stamina: " << people.stamina;
     return os;
 }
