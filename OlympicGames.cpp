@@ -24,10 +24,17 @@ void OlympicGames::subscribe(Client *client) {
 OlympicGames::OlympicGames() {
     string textJson = this->readFromFile("main.json");
     json j = json::parse(textJson);
-    int size = j.size();
+    unsigned long size = j.size();
     for (int i = 0; i < size; ++i) {
+        json current = j[i];
+        People *p = new People();
+        p->setFio(current["fio"]);
+        p->setForce(current["f"]);
+        p->setAgility(current["a"]);
+        p->setLuck(current["l"]);
+        p->setCountry(current["country"]);
+        cout << *p << endl;
     }
-
 }
 
 
@@ -47,7 +54,7 @@ string OlympicGames::readFromFile(string filename) {
     {
         text += line;
     }
-    cout << text;
+    
     file.close();
     return text;
 }
