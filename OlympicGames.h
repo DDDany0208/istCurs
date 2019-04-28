@@ -11,11 +11,15 @@ class OlympicGames {
 
     Client *clients;
 
+    void readFromFile(string filename);
+
 public:
     void notify();
 
     void subscribe(Client *client);
     void unsubscribe(Client *client);
+
+    OlympicGames();
 
     int getCount() const;
 
