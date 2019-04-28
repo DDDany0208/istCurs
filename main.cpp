@@ -18,6 +18,7 @@ int main() {
 
 
     games->getResults();
+    free(games);
 
     return 0;
 }

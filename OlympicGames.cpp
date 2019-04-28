@@ -207,4 +207,13 @@ string OlympicGames::getWinner() {
     return winner;
 }
 
+OlympicGames::~OlympicGames() {
+    for (int i = 0; i < this->count; ++i) {
+        free(clients[i]);
+    }
+    for (int i = 0; i < this->peopleCount; ++i) {
+        free(peoples[i]);
+    }
+}
+
 

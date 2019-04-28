@@ -42,6 +42,8 @@ public:
     void getResults();
     void writeResult(string &line);
 
+    virtual ~OlympicGames();
+
 };
 
 
