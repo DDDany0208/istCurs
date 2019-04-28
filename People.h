@@ -14,6 +14,13 @@ class People {
 
     string fio;
     string country;
+    string sport;
+public:
+    const string &getSport() const;
+
+    void setSport(const string &sport);
+
+private:
     int force;
     int agility;
     int luck;

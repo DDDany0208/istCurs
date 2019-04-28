@@ -14,6 +14,13 @@ class OlympicGames {
 
     string readFromFile(string filename);
 
+    const string sports[4] = {
+            "Skeleton", // Скелетон сила
+            "Biatlon", // Биатлон выносливость
+            "Skating", // Фигурное удача
+            "IceSkating" // Конькобежный ловкость
+    };
+
 public:
     void notify();
 
@@ -23,6 +30,8 @@ public:
     OlympicGames();
 
     int getCount() const;
+
+    void getResults();
 
 };
 

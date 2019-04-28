@@ -55,11 +55,20 @@ void People::parseJson2People(json j) {
     this->force = j["force"];
     this->luck = j["luck"];
     this->stamina = j["stamina"];
+    this->sport = j["sport"];
 }
 
 ostream &operator<<(ostream &os, const People &people) {
     os << "fio: " << people.fio << " country: " << people.country << " force: " << people.force << " agility: "
        << people.agility << " luck: " << people.luck << " stamina: " << people.stamina;
     return os;
+}
+
+const string &People::getSport() const {
+    return sport;
+}
+
+void People::setSport(const string &sport) {
+    People::sport = sport;
 }
 

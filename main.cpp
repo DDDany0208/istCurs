@@ -16,7 +16,8 @@ int main() {
     client->setChoice(country);
 
 
-    games->notify();
+
+    games->getResults();
 
     return 0;
 }

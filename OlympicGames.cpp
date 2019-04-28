@@ -94,3 +94,37 @@ string OlympicGames::readFromFile(string filename) {
     file.close();
     return text;
 }
+
+void OlympicGames::getResults() {
+    for (int j = 0; j < 4; ++j) {
+        string sport = this->sports[j];
+        string winnerCountry = "";
+        int max = -1;
+        for (int i = 0; i < peopleCount; ++i) {
+            People current = this->peoples[i];
+            int result;
+
+            if (current.getSport() != sport) {
+                continue;
+            }
+
+            if (sport == "Skeleton") {
+                result = current.getForce();
+            } else if (sport == "Biatlon") {
+                result = current.getAgility();
+            } else if (sport == "Skating") {
+                result = current.getLuck();
+            } else if (sport == "IceSkating") {
+                result = current.getStamina();
+            }
+
+            if (result > max) {
+                result = max;
+                winnerCountry = current.getCountry();
+            }
+
+            cout << "В ввиде спорта " << sport << " побдела << " << winnerCountry;
+        }
+    }
+    this->notify();
+}
