@@ -11,7 +11,7 @@ class OlympicGames {
 
     Client *clients;
 
-    void readFromFile(string filename);
+    string readFromFile(string filename);
 
 public:
     void notify();

@@ -15,3 +15,7 @@ const string &Client::getChoice() const {
 void Client::setChoice(const string &choice) {
     Client::choice = choice;
 }
+
+Client::Client() {}
+
+Client::Client(const string &choice) : choice(choice) {}

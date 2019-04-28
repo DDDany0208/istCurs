@@ -5,13 +5,13 @@
 
 int main() {
     string country;
-    Client *client = new Client;
+    Client *client = new Client();
+    OlympicGames *games = new OlympicGames();
     cout << "Выбирите страну, за которую болете:" << endl;
     cout << "Russia, Canada, Finland, France, Japan" << endl;
 
     cin >> country;
     client->setChoice(country);
-
 
 
 

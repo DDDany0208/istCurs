@@ -10,6 +10,12 @@ class Client {
 
     string choice; // country choice for client
 public:
+    Client(const string &choice);
+
+public:
+    Client();
+
+public:
     const string &getChoice() const;
 
     void setChoice(const string &choice);

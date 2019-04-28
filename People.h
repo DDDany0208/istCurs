@@ -4,6 +4,10 @@
 #include <string>
 #include <iostream>
 
+#include "json.hpp"
+
+using json = nlohmann::json;
+
 using namespace std;
 
 class People {
@@ -39,6 +43,10 @@ public:
     int getStamina() const;
 
     void setStamina(int stamina);
+
+    void parseJson2People(json j);
+
+    friend ostream &operator<<(ostream &os, const People &people);
 
 };
 
