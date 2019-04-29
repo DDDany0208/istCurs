@@ -117,8 +117,9 @@ string OlympicGames::readFromFile(string filename) {
 }
 
 void OlympicGames::getResults() {
-    string line = "";
+    string results = "";
     for (int j = 0; j < 4; ++j) {
+        int len = 0;
         string sport = this->sports[j];
         string winnerCountry = "Никто";
         int max = -1;
@@ -128,6 +129,8 @@ void OlympicGames::getResults() {
 
             if (current->getSport() != sport) {
                 continue;
+            } else {
+                len++;
             }
 
             if (sport == "Skeleton") {
@@ -144,13 +147,27 @@ void OlympicGames::getResults() {
                 max = result;
                 winnerCountry = current->getCountry();
             }
-
         }
-        line += "В ввиде спорта: " + sport + " победила: " + winnerCountry + "\n";
+
+        int k = 0;
+        People **copy = new People*[len];
+
+        for (int i = 0; i < peopleCount; ++i) {
+            People *current = this->peoples[i];
+            if (current->getSport() != sport) {
+                continue;
+            }
+            copy[k] = current;
+            k++;
+        }
+
+        results += "В ввиде спорта: " + sport + " победила: " + winnerCountry + "\n";
         cout << "В ввиде спорта: " << sport << " победила: " << winnerCountry << endl;
+        results += this->sort(copy, len, sport);
+
         addCountryResult(winnerCountry);
     }
-    this->writeResult(line);
+    this->writeResult(results);
     this->notify();
 }
 
@@ -214,6 +231,45 @@ OlympicGames::~OlympicGames() {
     for (int i = 0; i < this->peopleCount; ++i) {
         free(peoples[i]);
     }
+}
+
+string OlympicGames::sort(People **peoples, int len, string &sport) {
+    int result;
+    string line;
+    for (int i = 0; i < len; ++i) {
+        People *current = peoples[i];
+        result = this->filterSportParam(current, sport);
+        for (int j = i; j < len; ++j) {
+            People *second = peoples[j];
+            int secParam = this->filterSportParam(second, sport);
+            if (secParam > result) {
+                People *tmp = peoples[i];
+                peoples[i] = peoples[j];
+                peoples[j] = tmp;
+            }
+        }
+    }
+
+    for (int k = 0; k < len; ++k) {
+        cout << k + 1 << ") " << peoples[k]->getFio() << " " << peoples[k]->getCountry() << " " << this->filterSportParam(peoples[k], sport) << endl;
+        line += to_string(k + 1) + ") " + peoples[k]->getFio() + " " + peoples[k]->getCountry() + " " + to_string(this->filterSportParam(peoples[k], sport)) + "\n";
+    }
+
+    return line;
+}
+
+int OlympicGames::filterSportParam(People *current, string sport) {
+    int result = 0;
+    if (sport == "Skeleton") {
+        result = current->getForce();
+    } else if (sport == "Biatlon") {
+        result = current->getAgility();
+    } else if (sport == "Skating") {
+        result = current->getLuck();
+    } else if (sport == "IceSkating") {
+        result = current->getStamina();
+    }
+    return result;
 }
 
 

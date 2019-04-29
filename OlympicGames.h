@@ -35,6 +35,8 @@ public:
     OlympicGames();
 
     int getCount() const;
+    string sort(People **peoples, int len, string &sport);
+    int filterSportParam(People *current, string sport);
 
     void addCountryResult(string &country);
     string getWinner();
