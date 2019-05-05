@@ -14,11 +14,16 @@ int main() {
 
     while (country == "") {
         cout << "Выбирите страну, за которую болете:" << endl;
-        cout << "1 - Russia, 2 - Canada, 3 - Finland, 4 - France, 5 - Japan" << endl;
+        cout << "1 - Russia, 2 - Canada, 3 - Finland, 4 - France, 5 - Japan; 0 - Exit" << endl;
         country = readCountry();
+        if (country == "exit") {
+            cout << "Exit from programm" << endl;
+            return 0;
+        }
     }
 
     client->setChoice(country);
+    cout << "You choose: " << country << endl << endl;
 
     games->getResults();
     free(games);
@@ -46,6 +51,8 @@ string readCountry() {
         case 5:
             return "Japan";
             break;
+        case 0:
+            return "exit";
         default:
             cout << "Country error" << endl;
             return "";
